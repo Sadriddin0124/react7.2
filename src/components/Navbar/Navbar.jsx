@@ -20,7 +20,7 @@ const Navbar = ({ setNextPage }) => {
     localStorage.setItem("value", active)
   }
   useEffect(()=> {
-    let value = localStorage.getItem("value")
+    let value = +localStorage.getItem("value")
     if(value) {
       setActive(value)
     } else {
