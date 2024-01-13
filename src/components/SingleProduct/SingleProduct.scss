@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.single {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    gap: 80px;
+    padding: 30px;
+    justify-content: space-between;
+    box-shadow: 10px 10px 10px 2px rgba(34, 60, 80, 0.2);
+}
+.single__title {
+    margin-bottom: 100px;
+}
+.single__desc {
+    width: 400px;
+}
+.single__card-title {
+    margin-bottom: 50px;
+}
+.single__image {
+    width: 300px;
+    img {
+        width: 100%;
+        transition: .3s all;
+    }
+    img:hover {
+        transform: scale(1.1);
+    }
+}
