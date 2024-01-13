@@ -12,6 +12,7 @@ const Products = () => {
     jewelery: "jewelery",
   });
   const [classes, setClasses] = useState({
+    all: "btn-primary",
     men: "btn-outline-primary",
     women: "btn-outline-primary",
     electronics: "btn-outline-primary",
@@ -21,6 +22,7 @@ const Products = () => {
   const [active2, setActive2] = useState(false);
   const [active3, setActive3] = useState(false);
   const [active4, setActive4] = useState(false);
+  const [active5, setActive5] = useState(false);
 
   useEffect(() => {
     axios.get(`https://fakestoreapi.com/products?limit=20`).then((res) => {
@@ -28,8 +30,27 @@ const Products = () => {
       console.log(res.data);
     });
   }, []);
+  const handleAll = () => {
+    setActive5(true);
+    classes.all = "btn-primary";
+    classes.men = "btn-outline-primary";
+    classes.women = "btn-outline-primary";
+    classes.electronics = "btn-outline-primary";
+    classes.jewelery = "btn-outline-primary";
+    setClasses({ ...classes });
+    if (active5 == true) {
+      let payload = {
+        men: "men's clothing",
+        women: "women's clothing",
+        electronics: "electronics",
+        jewelery: "jewelery",
+      };
+      setCategories({ ...payload });
+    }
+  };
   const HandleMen = () => {
     setActive1(true);
+    classes.all = "btn-outline-primary";
     classes.men = "btn-primary";
     classes.women = "btn-outline-primary";
     classes.electronics = "btn-outline-primary";
@@ -47,6 +68,7 @@ const Products = () => {
   };
   const handleWomen = () => {
     setActive2(true);
+    classes.all = "btn-outline-primary";
     classes.women = "btn-primary";
     classes.men = "btn-outline-primary";
     classes.electronics = "btn-outline-primary";
@@ -64,6 +86,7 @@ const Products = () => {
   };
   const handleElectronics = () => {
     setActive3(true);
+    classes.all = "btn-outline-primary";
     classes.electronics = "btn-primary";
     classes.men = "btn-outline-primary";
     classes.women = "btn-outline-primary";
@@ -81,6 +104,7 @@ const Products = () => {
   };
   const handleJewelery = () => {
     setActive4(true);
+    classes.all = "btn-outline-primary";
     classes.jewelery = "btn-primary";
     classes.men = "btn-outline-primary";
     classes.women = "btn-outline-primary";
@@ -105,18 +129,33 @@ const Products = () => {
       <marquee>Categoriyani tanlash uchun 2 marta bosing</marquee>
       <div className="category">
         <h4
+          className={`category__btn btn ${classes.all} m-2`}
+          onClick={handleAll}
+        >
+          Hammasi
+        </h4>
+        <h4
           className={`category__btn btn ${classes.men} m-2`}
-           onClick={HandleMen}
+          onClick={HandleMen}
         >
           Men's clothing
         </h4>
-        <h4 className={`category__btn btn ${classes.women} m-2`}  onClick={handleWomen}>
+        <h4
+          className={`category__btn btn ${classes.women} m-2`}
+          onClick={handleWomen}
+        >
           Women's clothing
         </h4>
-        <h4 className={`category__btn btn ${classes.electronics} m-2` } onClick={handleElectronics}>
+        <h4
+          className={`category__btn btn ${classes.electronics} m-2`}
+          onClick={handleElectronics}
+        >
           Electronics
         </h4>
-        <h4 className={`category__btn btn ${classes.jewelery} m-2`} onClick={handleJewelery}>
+        <h4
+          className={`category__btn btn ${classes.jewelery} m-2`}
+          onClick={handleJewelery}
+        >
           Jewelery
         </h4>
         {/* <div className={`category__menu ${menuToggle == true ? "menu__toggle" : ""}`}>
